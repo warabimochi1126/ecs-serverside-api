@@ -4,7 +4,10 @@ const PORT = 3000;
 
 const server = http.createServer((req, res) => {
   if (req.url === "/test" && req.method === "GET") {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(200, {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*", // 追加
+    });
     res.end(
       JSON.stringify({
         message: `API:testにアクセスされました。乱数: ${Math.floor(Math.random() * 1000)}`,
